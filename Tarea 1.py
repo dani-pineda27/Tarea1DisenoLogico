@@ -4,7 +4,7 @@ Created on Thu Feb  9 09:24:42 2023
 
 @author: dapif
 """
-#--------------------------
+#-------Funciones--------------
 def Decimal_a_base(num,base):
     lista_enteros=[]
     entera=int(num-(num%1))
@@ -63,19 +63,22 @@ def Base_a_decimal(num,base):
     potencia=len(lista_enteros)
     
     for i in range(len(lista_enteros)):
-        numero=numero+(int(lista_enteros[i])*(base^(potencia-1)))
-        potencia=-1
-        
+        numero=numero+(int(lista_enteros[i])*(base**(potencia-1)))
+        # print("Numero: ",numero)
+        # print("Potencia: ",potencia)
+        potencia-=1
+
+    # print("-------------------")
     for y in range(len(lista_fraccion)):
-        numero=numero+(int(lista_enteros[i])*(base^(potencia-1)))
-        potencia=-1
+        numero=numero+(int(lista_enteros[i])*(base**(potencia-1)))
+        # print("Numero: ",numero)
+        # print("Potencia: ",potencia)
+        potencia -= 1
         
     return numero
     
 
-
-#--------------------------
-
+#--------Main------------------
 
 while True:
     print("\n-------------------")
@@ -95,8 +98,8 @@ while True:
         
     elif opcion==2:
         num=str(input("\nIngrese un número con parte fraccionaria: "))        
-        print("\n")
         base=int(input("\nIngrese la base: " ))
+        print("\n")
         print(Base_a_decimal(num,base))
         
     else:
