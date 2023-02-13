@@ -56,28 +56,19 @@ def Base_a_decimal(num,base):
     lista_fraccion=[]
     lista_fraccion=list(lista_separada[1])    
 
-    print(lista_enteros)
-    print(lista_fraccion)
-    
     numero=int(0)
     potencia=len(lista_enteros)
     
     for i in range(len(lista_enteros)):
         numero=numero+(int(lista_enteros[i])*(base**(potencia-1)))
-        # print("Numero: ",numero)
-        # print("Potencia: ",potencia)
         potencia-=1
 
-    # print("-------------------")
     for y in range(len(lista_fraccion)):
-        numero=numero+(int(lista_enteros[i])*(base**(potencia-1)))
-        # print("Numero: ",numero)
-        # print("Potencia: ",potencia)
+        numero=numero+(int(lista_fraccion[y])*(base**(potencia-1)))
         potencia -= 1
         
     return numero
     
-
 #--------Main------------------
 
 while True:
@@ -85,26 +76,35 @@ while True:
     print("Presione 1 para convertir de decimal a base r.")
     print("Presione 2 para convertir de base r a decimal.")
     print("Presione 0 para terminar el programa.")
-    opcion=int(input())
     
-    if opcion==0:
-        break
-    elif opcion==1:
-        num=float(input("\nIngrese un número con parte fraccionaria: "))
-        base=int(input("\nIngrese la base: " ))
+    try:
+        opcion=int(input())
+           
+        if opcion==0:
+            break
         
-        print("\n")
-        print(Decimal_a_base(num,base))
-        
-    elif opcion==2:
-        num=str(input("\nIngrese un número con parte fraccionaria: "))        
-        base=int(input("\nIngrese la base: " ))
-        print("\n")
-        print(Base_a_decimal(num,base))
-        
-    else:
-        print("\nERROR: escriba una opción válida.")
+        elif opcion==1:
+            num=float(input("\nIngrese un número con parte fraccionaria: "))
+            base=int(input("\nIngrese la base: " ))
+    
+    
+            print("\n")
+            print(Decimal_a_base(num,base))
             
+        elif opcion==2:
+            num=str(input("\nIngrese un número con parte fraccionaria: "))        
+            base=int(input("\nIngrese la base: " ))
+            print("\n")
+            print(Base_a_decimal(num,base))
+            
+        else:
+            print("\nERROR: escriba una opción válida.")
+            
+    except ValueError:
+        print("\nERROR: Debes ingresar un número.")
+    except:
+        print("\nERROR: Error desconocido.")
+ 
 
     
     
