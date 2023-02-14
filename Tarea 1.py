@@ -77,6 +77,8 @@ while True:
     print("Presione 2 para convertir de base r a decimal.")
     print("Presione 0 para terminar el programa.")
     
+    error=bool(True)
+    
     try:
         opcion=int(input())
            
@@ -84,18 +86,37 @@ while True:
             break
         
         elif opcion==1:
-            num=float(input("\nIngrese un número con parte fraccionaria: "))
-            base=int(input("\nIngrese la base: " ))
-    
-    
-            print("\n")
-            print(Decimal_a_base(num,base))
+            while error==True:
+                try:
+                    num=float(input("\nIngrese un número con parte fraccionaria: "))
+                    base=int(input("\nIngrese la base: " ))
+                                
+                    print("\n")
+                    print(Decimal_a_base(num,base))
+                    error=False
+                                        
+                except ValueError:
+                    print("\nERROR: Debes ingresar números.")
+                except:
+                    print("\nERROR: Error desconocido.")
+           
+
             
         elif opcion==2:
-            num=str(input("\nIngrese un número con parte fraccionaria: "))        
-            base=int(input("\nIngrese la base: " ))
-            print("\n")
-            print(Base_a_decimal(num,base))
+            while error==True:
+                num=str(input("\nIngrese un número con parte fraccionaria: ")) 
+                
+                try:
+                    base=int(input("\nIngrese la base: " ))
+                    print("\n")
+                    print(Base_a_decimal(num,base))
+                    error=False
+                
+                except ValueError:
+                    print("\nERROR: Debes ingresar números.")
+                except:
+                    print("\nERROR: Error desconocido.")
+                    
             
         else:
             print("\nERROR: escriba una opción válida.")
